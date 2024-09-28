@@ -116,4 +116,37 @@
     </div>
 <h1>Comming soon...</h1>
 <h2>現在、このページは準備中です。お知らせは、ホームよりご覧ください。</h2>
+         <footer>
+             <div class="copyright">
+                 <p>© 2024 藤縄先生ありがとうプロジェクト実行委員会</p>
+             </div>
+         </footer>
+     </div>
 
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script>
+         $(function(){
+             function end_loader() {
+                 $('#loader03').fadeOut(800);
+             }
+
+             function show_load() {
+                 $('#loader03 .looping-rhombuses-spinner').fadeIn(400);
+             }
+
+             function hide_load() {
+                 $('#loader03 .looping-rhombuses-spinner').fadeOut(400);
+             }
+
+             function show_txt() {
+                 $('#loader03 .txt').fadeIn(400);
+             }
+
+             $(window).on('load', function () {
+                 setTimeout(function () { show_load(); }, 800);
+                 setTimeout(function () { hide_load(); }, 3500);
+                 setTimeout(function () { show_txt(); }, 4000);
+                 setTimeout(function () { end_loader(); }, 5000);
+             });
+         });
+     </script>
