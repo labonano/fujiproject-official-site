@@ -8,46 +8,38 @@ body {
     font-family: Arial, sans-serif;
 }
 
-main {
-    position: relative;
-    z-index: 2;
-    background-color: #fff;
+header {
+    background-color: #333;
+    color: white;
     padding: 20px;
-    min-height: 100vh;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.header-menu ul {
+    list-style-type: none;
+}
+
+.header-menu li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.header-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding-top: 100px; /* ヘッダーの高さを考慮 */
 }
 
 footer {
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: darkred;
-    color: whitesmoke;
-    transform: translateY(100%);
-    transition: transform 0.3s ease-in-out;
-}
-
-.footer-menu {
-    height: 60px;
-}
-
-.footer-menu-list {
-    list-style: none;
+    background-color: #333;
+    color: white;
     text-align: center;
-    line-height: 60px;
-}
-
-.footer-menu-list li {
-    margin: 10px;
-    display: inline;
-}
-
-.copyright {
-    text-align: center;
-    padding: 10px 0;
-}
-
-footer.visible {
-    transform: translateY(0);
+    padding: 20px;
 }
