@@ -6,13 +6,13 @@
     <title>藤縄先生ありがとうプロジェクト</title>
     <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
     <style>
-.responsive-image {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}        
-.loader {
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }        
+        .loader {
             position: fixed;
             width: 100%;
             height: 100%;
@@ -108,6 +108,21 @@
         .project-description {
             margin-top: 20px; 
         }
+
+        /* 通知用のスタイル */
+        #e-notice, #n-notice {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        #e-notice {
+            background-color: #ffcccc;
+            color: #cc0000;
+        }
+        #n-notice {
+            background-color: #e6f3ff;
+            color: #0066cc;
+        }
     </style>
 </head>
 <body>
@@ -127,52 +142,68 @@
     </div>
 
     <div class="main-content">
+        <div id="e-notice"></div>
+        <div id="n-notice"></div>
         <h1>藤縄先生ありがとうプロジェクト</h1>
         
         <main>
-<img src="fujiproject-logo2.jpg" alt="藤縄先生ありがとうプロジェクト ロゴ" class="responsive-image">
+            <img src="fujiproject-logo2.jpg" alt="藤縄先生ありがとうプロジェクト ロゴ" class="responsive-image">
             
-           <h2>藤縄先生ありがとうプロジェクトとは</h2>
-           <div class="project-description">
-               <p>藤縄先生ありがとうプロジェクトは、長年にわたり教育に尽力されてきた藤縄先生への感謝の気持ちを表すために立ち上げられました。
+            <h2>藤縄先生ありがとうプロジェクトとは</h2>
+            <div class="project-description">
+                <p>藤縄先生ありがとうプロジェクトは、長年にわたり教育に尽力されてきた藤縄先生への感謝の気持ちを表すために立ち上げられました。</p>
+            </div>
 
-           <!-- スクロール用のダミーコンテンツ -->
-           <div style="height: 1500px;"></div>
-         </main>
+            <!-- スクロール用のダミーコンテンツ -->
+            <div style="height: 1500px;"></div>
+        </main>
 
-         <footer>
-             <div class="copyright">
-                 <p>© 2024 藤縄先生ありがとうプロジェクト実行委員会</p>
-             </div>
-         </footer>
-     </div>
+        <footer>
+            <div class="copyright">
+                <p>© 2024 藤縄先生ありがとうプロジェクト実行委員会</p>
+            </div>
+        </footer>
+    </div>
 
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <script>
-         $(function(){
-             function end_loader() {
-                 $('#loader03').fadeOut(800);
-             }
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            function end_loader() {
+                $('#loader03').fadeOut(800);
+            }
 
-             function show_load() {
-                 $('#loader03 .looping-rhombuses-spinner').fadeIn(400);
-             }
+            function show_load() {
+                $('#loader03 .looping-rhombuses-spinner').fadeIn(400);
+            }
 
-             function hide_load() {
-                 $('#loader03 .looping-rhombuses-spinner').fadeOut(400);
-             }
+            function hide_load() {
+                $('#loader03 .looping-rhombuses-spinner').fadeOut(400);
+            }
 
-             function show_txt() {
-                 $('#loader03 .txt').fadeIn(400);
-             }
+            function show_txt() {
+                $('#loader03 .txt').fadeIn(400);
+            }
 
-             $(window).on('load', function () {
-                 setTimeout(function () { show_load(); }, 800);
-                 setTimeout(function () { hide_load(); }, 3500);
-                 setTimeout(function () { show_txt(); }, 4000);
-                 setTimeout(function () { end_loader(); }, 5000);
-             });
-         });
-     </script>
+            // e-noticeとn-noticeを読み込む関数
+            function loadNotices() {
+                $.get('e-notice.txt', function(data) {
+                    $('#e-notice').html(data);
+                });
+                $.get('n-notice.txt', function(data) {
+                    $('#n-notice').html(data);
+                });
+            }
+
+            $(window).on('load', function () {
+                setTimeout(function () { show_load(); }, 800);
+                setTimeout(function () { hide_load(); }, 3500);
+                setTimeout(function () { show_txt(); }, 4000);
+                setTimeout(function () { end_loader(); }, 5000);
+
+                // 通知を読み込む
+                loadNotices();
+            });
+        });
+    </script>
 </body>
 </html>
