@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>藤縄先生ありがとうプロジェクト</title>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
     <style>
         .loader {
             position: fixed;
@@ -55,6 +56,47 @@
                 transform: translateX(-466%) rotate(45deg) scale(0);
             }
         }
+
+        /* サイドバーとメインコンテンツのスタイル */
+        body {
+            font-family: 'Klee One', sans-serif; /* Klee Oneフォントを指定 */
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .main-content {
+            margin-left: 250px; /* サイドバーの幅分だけマージン */
+            padding: 20px; /* パディング */
+        }
+
+        footer {
+            background-color: #333; /* フッターの背景色 */
+            color: white; /* フッターの文字色 */
+            text-align: center; /* 中央揃え */
+            padding: 20px; /* パディング */
+        }
     </style>
 </head>
 <body>
@@ -67,72 +109,57 @@
         <p class="txt">こんにちは！</p>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(function(){
-            // ローダー終了
-            function end_loader() {
-                $('#loader03').fadeOut(800);
-            }
-            // ローディング表示
-            function show_load() {
-                $('#loader03 .looping-rhombuses-spinner').fadeIn(400);
-            }
-            // ローディング非表示
-            function hide_load() {
-                $('#loader03 .looping-rhombuses-spinner').fadeOut(400);
-            }
-            // テキスト表示
-            function show_txt() {
-                $('#loader03 .txt').fadeIn(400);
-            }
-        
-            // タイマー処理
-            $(window).on('load', function () {
-                // 処理①
-                setTimeout(function () {
-                    show_load();
-                }, 800)
-                // 処理②
-                setTimeout(function () {
-                    hide_load();
-                }, 3500)
-                // 処理③
-                setTimeout(function () {
-                    show_txt();
-                }, 4000)
-                // 処理④
-                setTimeout(function () {
-                    end_loader();
-                }, 5000)
-            })
-        });
-    </script>
-   <header id="header">
+    <div class="sidebar">
+        <a href="#">ホーム</a>
+        <a href="#">HTML</a>
+        <a href="#">CSS</a>
+        <a href="#">お問い合わせ</a>
+    </div>
+
+    <div class="main-content">
         <h1>藤縄先生ありがとうプロジェクト</h1>
-        <nav class="header-menu">
-            <ul>
-                <li><a href="#">ホーム</a></li>
-                <li><a href="#">HTML</a></li>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">お問い合わせ</a></li>
-            </ul>
-        </nav>
-    </header>
+        
+        <main>
+            <h2>メインコンテンツ</h2>
+            <p>ここにページの主要なコンテンツが入ります。スクロールしてサイドバーの変化を確認してください。</p>
+            
+             <!-- スクロール用のダミーコンテンツ -->
+             <div style="height: 1500px;"></div>
+         </main>
 
-    <main>
-        <h2>メインコンテンツ</h2>
-        <p>ここにページの主要なコンテンツが入ります。スクロールしてヘッダーの変化を確認してください。</p>
-        <!-- スクロール用のダミーコンテンツ -->
-        <div style="height: 1500px;"></div>
-    </main>
+         <footer>
+             <div class="copyright">
+                 <p>© 2024 藤縄先生ありがとうプロジェクト実行委員会</p>
+             </div>
+         </footer>
+     </div>
 
-    <footer>
-        <div class="copyright">
-            <p>© 2024 藤縄先生ありがとうプロジェクト実行委員会</p>
-        </div>
-    </footer>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script>
+         $(function(){
+             function end_loader() {
+                 $('#loader03').fadeOut(800);
+             }
 
-    <script src="script.js"></script>
+             function show_load() {
+                 $('#loader03 .looping-rhombuses-spinner').fadeIn(400);
+             }
+
+             function hide_load() {
+                 $('#loader03 .looping-rhombuses-spinner').fadeOut(400);
+             }
+
+             function show_txt() {
+                 $('#loader03 .txt').fadeIn(400);
+             }
+
+             $(window).on('load', function () {
+                 setTimeout(function () { show_load(); }, 800);
+                 setTimeout(function () { hide_load(); }, 3500);
+                 setTimeout(function () { show_txt(); }, 4000);
+                 setTimeout(function () { end_loader(); }, 5000);
+             });
+         });
+     </script>
 </body>
 </html>
