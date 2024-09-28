@@ -1,26 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const footer = document.getElementById('dynamic-footer');
-    let lastScrollTop = 0;
-    let isFooterVisible = false;
-
+    const header = document.getElementById('header');
+    
     window.addEventListener('scroll', function() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        let windowHeight = window.innerHeight;
-        let documentHeight = document.documentElement.scrollHeight;
-
-        // スクロールが下向きで、ページの下部に近づいたとき
-        if (scrollTop > lastScrollTop && scrollTop + windowHeight > documentHeight - 100) {
-            if (!isFooterVisible) {
-                footer.classList.add('visible');
-                isFooterVisible = true;
-            }
+        if (window.scrollY > 50) {
+            header.style.backgroundColor = '#222'; // スクロール時の背景色
+            header.style.padding = '10px'; // スクロール時のパディング
         } else {
-            if (isFooterVisible) {
-                footer.classList.remove('visible');
-                isFooterVisible = false;
-            }
+            header.style.backgroundColor = '#333'; // 元の背景色
+            header.style.padding = '20px'; // 元のパディング
         }
-
-        lastScrollTop = scrollTop;
     });
 });
