@@ -31,7 +31,9 @@
             display: none;
         }
         .loader .looping-rhombuses-spinner {
-            display: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .looping-rhombuses-spinner .rhombus {
             width: 15px;
@@ -186,19 +188,34 @@
 
             // e-noticeとn-noticeを読み込む関数
             function loadNotices() {
-                $.get('e-notice.txt', function(data) {
-                    $('#e-notice').html(data);
-                });
-                $.get('n-notice.txt', function(data) {
-                    $('#n-notice').html(data);
-                });
+                $.get('e-notice.txt')
+                    .done(function(data) {
+                        $('#e-notice').html(data);
+                    })
+                    .fail(function() {
+                        $('#e-notice').hide(); // 読み込めなかった場合は非表示
+                    });
+                
+                $.get('n-notice.txt')
+                    .done(function(data) {
+                        $('#n-notice').html(data);
+                    })
+                    .fail(function() {
+                        $('#n-notice').hide(); // 読み込めなかった場合は非表示
+                    });
             }
 
             $(window).on('load', function () {
-                setTimeout(function () { show_load(); }, 800);
-                setTimeout(function () { hide_load(); }, 3500);
-                setTimeout(function () { show_txt(); }, 4000);
-                setTimeout(function () { end_loader(); }, 5000);
+                show_load();
+
+                setTimeout(function () {
+                    hide_load();
+                    show_txt();
+                }, 3000); // ローディングアニメーションを3秒表示
+
+                setTimeout(function () {
+                    end_loader();
+                }, 5000); // 最終的にローディングを5秒後に終了
 
                 // 通知を読み込む
                 loadNotices();
