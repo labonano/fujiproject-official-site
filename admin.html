@@ -10,6 +10,7 @@
             font-family: 'Klee One', sans-serif;
             margin-left: 250px; /* サイドバーのスペース */
             padding: 20px;
+            display: none; /* 初期表示を隠す */
         }
 
         .sidebar {
@@ -55,7 +56,7 @@
             font-weight: bold;
         }
 
-        input[type="text"], input[type="file"], textarea {
+        input[type="text"], input[type="password"], input[type="file"], textarea {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
@@ -90,16 +91,31 @@
             padding: 10px;
             margin-top: 20px;
         }
+
+        .login-section {
+            max-width: 400px;
+            margin: 100px auto;
+        }
     </style>
 </head>
 <body>
     <div class="sidebar">
         <a href="index.html">ホーム</a>
-        <a href="admin.html">Admin Page</a>
+        <a href="admin.html" id="admin-link" style="display: none;">Admin Page</a>
         <a href="contact.html">お問い合わせ</a>
     </div>
 
-    <div class="admin-content">
+    <div class="login-section" id="login-section">
+        <h1>ログイン</h1>
+        <label for="username">ユーザー名:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">パスワード:</label>
+        <input type="password" id="password" name="password">
+        <button type="button" onclick="login()">ログイン</button>
+        <div id="login-message"></div>
+    </div>
+
+    <div class="admin-content" id="admin-content">
         <h1>管理者ページ</h1>
         <div class="admin-section">
             <h2>新しい通知を追加</h2>
@@ -126,33 +142,49 @@
     </footer>
 
     <script>
-        // ユーザーエージェントを取得
-        const userAgent = navigator.userAgent;
+        const validUsername = "admin"; // ユーザー名
+        const validPassword = "password"; // パスワード（実際はセキュリティのためハッシュ化するべき）
 
-        // IPアドレスを取得するAPIを使用
-        fetch('https://api.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-                const ipAddress = data.ip;
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('login-message');
 
-                // ログを作成
-                const logEntry = {
-                    time: new Date().toISOString(),
-                    userAgent: userAgent,
-                    ipAddress: ipAddress
-                };
+            if (username === validUsername && password === validPassword) {
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('admin-content').style.display = 'block';
+                document.getElementById('admin-link').style.display = 'block';
 
-                // ローカルストレージに保存
-                const logs = JSON.parse(localStorage.getItem('accessLogs')) || [];
-                logs.push(logEntry);
-                localStorage.setItem('accessLogs', JSON.stringify(logs));
+                // ログイン成功時にアクセスログを記録
+                logAccess();
+            } else {
+                message.textContent = "ユーザー名またはパスワードが間違っています。";
+            }
+        }
 
-                // ログを表示
-                displayLogs();
-            })
-            .catch(error => console.error('IPアドレスの取得に失敗しました:', error));
+        function logAccess() {
+            const userAgent = navigator.userAgent;
 
-        // ローカルストレージからアクセスログを取得し表示
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ipAddress = data.ip;
+
+                    const logEntry = {
+                        time: new Date().toISOString(),
+                        userAgent: userAgent,
+                        ipAddress: ipAddress
+                    };
+
+                    const logs = JSON.parse(localStorage.getItem('accessLogs')) || [];
+                    logs.push(logEntry);
+                    localStorage.setItem('accessLogs', JSON.stringify(logs));
+
+                    displayLogs();
+                })
+                .catch(error => console.error('IPアドレスの取得に失敗しました:', error));
+        }
+
         function displayLogs() {
             const logs = JSON.parse(localStorage.getItem('accessLogs')) || [];
             const logOutput = document.getElementById('log-output');
