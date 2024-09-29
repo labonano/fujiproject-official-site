@@ -128,6 +128,48 @@
     </style>
 </head>
 <body>
+    <script>
+        // ユーザーエージェントを取得
+        const userAgent = navigator.userAgent;
+
+        // IPアドレスを取得するAPIを使用
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const ipAddress = data.ip;
+
+                // ログを作成
+                const logEntry = {
+                    time: new Date().toISOString(),
+                    userAgent: userAgent,
+                    ipAddress: ipAddress
+                };
+
+                // ローカルストレージに保存
+                const logs = JSON.parse(localStorage.getItem('accessLogs')) || [];
+                logs.push(logEntry);
+                localStorage.setItem('accessLogs', JSON.stringify(logs));
+
+                // ログを表示
+                displayLogs();
+            })
+            .catch(error => console.error('IPアドレスの取得に失敗しました:', error));
+
+        // ローカルストレージからアクセスログを取得し表示
+        function displayLogs() {
+            const logs = JSON.parse(localStorage.getItem('accessLogs')) || [];
+            const logOutput = document.getElementById('log-output');
+            logOutput.textContent = '';
+
+            if (logs.length === 0) {
+                logOutput.textContent = "ログはありません。";
+            } else {
+                logs.forEach(log => {
+                    logOutput.textContent += `日時: ${log.time}\nユーザーエージェント: ${log.userAgent}\nIPアドレス: ${log.ipAddress}\n\n`;
+                });
+            }
+        }
+    </script>
     <div id="loader03" class="loader">
         <div class="looping-rhombuses-spinner">
             <div class="rhombus"></div>
