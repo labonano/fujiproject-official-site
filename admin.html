@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者ページ - 藤縄先生ありがとうプロジェクト</title>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Klee One', sans-serif;
+            margin-left: 250px; /* サイドバーのスペース */
+            padding: 20px;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .admin-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .admin-section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="file"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .log-output {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="index.html">ホーム</a>
+        <a href="admin.html">Admin Page</a>
+        <a href="contact.html">お問い合わせ</a>
+    </div>
+
+    <div class="admin-content">
+        <h1>管理者ページ</h1>
+        <div class="admin-section">
+            <h2>新しい通知を追加</h2>
+            <label for="n-notice">通知内容:</label>
+            <textarea id="n-notice" name="n-notice" rows="5"></textarea>
+            <button type="button" onclick="alert('通知が保存されました。')">通知を保存</button>
+        </div>
+
+        <div class="admin-section">
+            <h2>既存の通知を編集</h2>
+            <label for="e-notice">編集する通知:</label>
+            <textarea id="e-notice" name="e-notice" rows="5"></textarea>
+            <button type="button" onclick="alert('通知が更新されました。')">通知を更新</button>
+        </div>
+
+        <div class="admin-section">
+            <h2>アクセスログ</h2>
+            <div class="log-output" id="log-output"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 藤縄先生ありがとうプロジェクト実行委員会</p>
+    </footer>
+
+    <script>
+        // ユーザーエージェントを取得
+        const userAgent = navigator.userAgent;
+
+        // IPアドレスを取得するAPIを使用
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const ipAddress = data.ip;
+
+                // ログを作成
+                const logEntry = {
+                    time: new Date().toISOString(),
+                    userAgent: userAgent,
+                    ipAddress: ipAddress
+                };
+
+                // ローカルストレージに保存
+                const logs = JSON.parse(localStorage.getItem('accessLogs')) || [];
+                logs.push(logEntry);
+                localStorage.setItem('accessLogs', JSON.stringify(logs));
+
+                // ログを表示
+                displayLogs();
+            })
+            .catch(error => console.error('IPアドレスの取得に失敗しました:', error));
+
+        // ローカルストレージからアクセスログを取得し表示
+        function displayLogs() {
+            const logs = JSON.parse(localStorage.getItem('accessLogs')) || [];
+            const logOutput = document.getElementById('log-output');
+            logOutput.textContent = '';
+
+            if (logs.length === 0) {
+                logOutput.textContent = "ログはありません。";
+            } else {
+                logs.forEach(log => {
+                    logOutput.textContent += `日時: ${log.time}\nユーザーエージェント: ${log.userAgent}\nIPアドレス: ${log.ipAddress}\n\n`;
+                });
+            }
+        }
+    </script>
+</body>
+</html>
