@@ -99,6 +99,7 @@
         .admin-content {
             max-width: 800px;
             margin: 0 auto;
+            display: none; /* 管理者コンテンツを非表示に */
         }
 
         .admin-section {
@@ -166,7 +167,7 @@
     <div class="sidebar">
         <a href="index.html">ホーム</a>
         <a href="admin.html" id="admin-link" style="display: none;">Admin Page</a>
-        <a href="contact.html">お問い合わせ</a>
+        <a href="coming_soon.html">お問い合わせ</a>
     </div>
 
     <div class="login-section" id="login-section">
@@ -207,8 +208,8 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        const validUsername = "admin"; // ユーザー名
-        const validPassword = "password"; // パスワード
+        const validUsername = "Root-FUui"; // ユーザー名
+        const validPassword = "Admin-Fujiproject1"; // パスワード
 
         function login() {
             const username = document.getElementById('username').value;
@@ -218,9 +219,8 @@
             if (username === validUsername && password === validPassword) {
                 loginMessage.textContent = "ログイン成功";
                 loginMessage.style.color = "green";
-                document.getElementById('admin-link').style.display = "block";
-                document.getElementById('login-section').style.display = "none";
-                document.getElementById('admin-content').style.display = "block";
+                document.getElementById('login-section').style.display = "none"; // ログインセクションを非表示
+                document.getElementById('admin-content').style.display = "block"; // 管理者コンテンツを表示
             } else {
                 loginMessage.textContent = "ユーザー名またはパスワードが間違っています";
                 loginMessage.style.color = "red";
@@ -230,18 +230,22 @@
         $(function(){
             function end_loader() {
                 $('#loader03').fadeOut(800);
+                console.log('ローダー終了');
             }
 
             function show_load() {
                 $('#loader03 .looping-rhombuses-spinner').fadeIn(400);
+                console.log('ローダー表示');
             }
 
             function hide_load() {
                 $('#loader03 .looping-rhombuses-spinner').fadeOut(400);
+                console.log('ローダー非表示');
             }
 
             function show_txt() {
                 $('#loader03 .txt').fadeIn(400);
+                console.log('テキスト表示');
             }
 
             $(window).on('load', function () {
