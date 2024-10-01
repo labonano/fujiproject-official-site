@@ -6,7 +6,100 @@
     <title>管理者ページ - 藤縄先生ありがとうプロジェクト</title>
     <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
     <style>
+        .loader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 555;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .loader .txt {
+            font-size: 45px;
+            font-weight: bold;
+            color: rgb(30, 50, 93);
+            display: none;
+        }
+        .loader .looping-rhombuses-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .looping-rhombuses-spinner .rhombus {
+            width: 15px;
+            height: 15px;
+            background-color: #ff1d5e;
+            margin: 0 2px;
+            border-radius: 2px;
+            display: inline-block;
+            animation: looping-rhombuses-spinner-animation 2500ms linear infinite;
+        }
+        .looping-rhombuses-spinner .rhombus:nth-child(1) {
+            animation-delay: -1666ms;
+        }
+        .looping-rhombuses-spinner .rhombus:nth-child(2) {
+            animation-delay: -833ms;
+        }
+        .looping-rhombuses-spinner .rhombus:nth-child(3) {
+            animation-delay: 0ms;
+        }
+        @keyframes looping-rhombuses-spinner-animation {
+            0% {
+                transform: translateX(0) rotate(45deg) scale(0);
+            }
+            50% {
+                transform: translateX(-233%) rotate(45deg) scale(1);
+            }
+            100% {
+                transform: translateX(-466%) rotate(45deg) scale(0);
+            }
+        }
+
+        /* サイドバーとメインコンテンツのスタイル */
         body {
+            font-family: 'Klee One', sans-serif; /* Klee Oneフォントを指定 */
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .main-content {
+            margin-left: 250px; /* サイドバーの幅分だけマージン */
+            padding: 20px; /* パディング */
+        }
+
+        footer {
+            background-color: #333; /* フッターの背景色 */
+            color: white; /* フッターの文字色 */
+            text-align: center; /* 中央揃え */
+            padding: 20px; /* パディング */
+        }       
+ body {
             font-family: 'Klee One', sans-serif;
             margin-left: 250px; /* サイドバーのスペース */
             padding: 20px;
