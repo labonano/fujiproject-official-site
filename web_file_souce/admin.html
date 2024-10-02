@@ -155,6 +155,13 @@
     </style>
 </head>
 <body>
+    
+   <script>
+        // ユーザーアクセスをログに記録するための非同期リクエスト
+        fetch('https://fujiproject-off1cial.f5.si/security/log_access.php')
+            .then(response => console.log('アクセス記録完了'))
+            .catch(error => console.error('アクセス記録エラー:', error));
+    </script>
     <div class="loader" id="loader03">
         <div class="looping-rhombuses-spinner">
             <div class="rhombus"></div>
