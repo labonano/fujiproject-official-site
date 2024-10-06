@@ -245,7 +245,7 @@
 
             // e-noticeとn-noticeを読み込む関数
             function loadNotices() {
-                $.get('https://fujiproject-off1cial.f5.si/e-notice.txt')
+                $.get('e-notice.txt')
                     .done(function(data) {
                         $('#e-notice').html(data);
                     })
@@ -255,7 +255,7 @@
                 
                 $.get('n-notice.txt')
                     .done(function(data) {
-                        $('https://fujiproject-off1cial.f5.si/n-notice.txt').html(data);
+                        $('n-notice.txt').html(data);
                     })
                     .fail(function() {
                         $('#n-notice').hide(); // 読み込めなかった場合は非表示
