@@ -255,7 +255,7 @@
                 
                 $.get('n-notice.txt')
                     .done(function(data) {
-                        $('n-notice.txt').html(data);
+                        $('#n-notice.txt').html(data);
                     })
                     .fail(function() {
                         $('#n-notice').hide(); // 読み込めなかった場合は非表示
