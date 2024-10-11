@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta name=”description“ content=“ 藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website“ />
-<head prefix=”og: http://ogp.me/ns#”>
-<meta property="og:url" content="fujiproject-official-site.github.io/web_file_souce/index.html" />
-<meta property="og:type" content="公式サイト" />
-<meta property="og:title" content=" 藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
-<meta property="og:description" content=" 藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
-<meta property="og:site_name" content=" 藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
-<meta property="og:image" content="https://fujiproject-off1cial.f5.si/web_file_souce/藤縄先生ありがとうプロジェクト (1).png" />
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
+    <meta property="og:url" content="https://fujiproject-official-site.github.io/web_file_souce/index.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
+    <meta property="og:description" content="藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
+    <meta property="og:site_name" content="藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
+    <meta property="og:image" content="https://fujiproject-off1cial.f5.si/web_file_souce/藤縄先生ありがとうプロジェクト (1).png" />
     <title>藤縄先生ありがとうプロジェクト</title>
     <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
     <style>
@@ -73,12 +71,9 @@
                 transform: translateX(-466%) rotate(45deg) scale(0);
             }
         }
-
-        /* サイドバーとメインコンテンツのスタイル */
         body {
-            font-family: 'Klee One', sans-serif; /* Klee Oneフォントを指定 */
+            font-family: 'Klee One', sans-serif;
         }
-
         .sidebar {
             height: 100%;
             width: 250px;
@@ -90,7 +85,6 @@
             overflow-x: hidden;
             padding-top: 60px;
         }
-
         .sidebar a {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
@@ -98,29 +92,22 @@
             color: #818181;
             display: block;
         }
-
         .sidebar a:hover {
             color: #f1f1f1;
         }
-
         .main-content {
-            margin-left: 250px; /* サイドバーの幅分だけマージン */
-            padding: 20px; /* パディング */
+            margin-left: 250px;
+            padding: 20px;
         }
-
         footer {
-            background-color: #333; /* フッターの背景色 */
-            color: white; /* フッターの文字色 */
-            text-align: center; /* 中央揃え */
-            padding: 20px; /* パディング */
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
         }
-
-        /* プロジェクト説明用スタイル */
         .project-description {
-            margin-top: 20px; 
+            margin-top: 20px;
         }
-
-        /* 通知用のスタイル */
         #e-notice, #n-notice {
             padding: 10px;
             margin-bottom: 20px;
@@ -138,44 +125,32 @@
 </head>
 <body>
    <script>
-        // ユーザーアクセスをログに記録するための非同期リクエスト
         fetch('https://fujiproject-off1cial.f5.si/security/log_access.php')
             .then(response => console.log('アクセス記録完了'))
             .catch(error => console.error('アクセス記録エラー:', error));
     </script>
     <script>
-        // ユーザーエージェントを取得
         const userAgent = navigator.userAgent;
-
-        // IPアドレスを取得するAPIを使用
         fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
                 const ipAddress = data.ip;
-
-                // ログを作成
                 const logEntry = {
                     time: new Date().toISOString(),
                     userAgent: userAgent,
                     ipAddress: ipAddress
                 };
-
-                // ローカルストレージに保存
                 const logs = JSON.parse(localStorage.getItem('accessLogs')) || [];
                 logs.push(logEntry);
                 localStorage.setItem('accessLogs', JSON.stringify(logs));
-
-                // ログを表示
                 displayLogs();
             })
             .catch(error => console.error('IPアドレスの取得に失敗しました:', error));
 
-        // ローカルストレージからアクセスログを取得し表示
         function displayLogs() {
             const logs = JSON.parse(localStorage.getItem('accessLogs')) || [];
             const logOutput = document.getElementById('log-output');
             logOutput.textContent = '';
-
             if (logs.length === 0) {
                 logOutput.textContent = "ログはありません。";
             } else {
@@ -194,44 +169,34 @@
         <p class="txt">こんにちは！</p>
     </div>
 
- <!-- サイドバーを読み込む場所 --><div id="sidebar-container"></div>
+    <div id="sidebar-container"></div>
 
-<script>
-    // サイドバーを読み込む関数
-    function loadSidebar() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://fujiproject-off1cial.f5.si/裏側/sidebar.html', true); // URLにhttps://を追加
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                document.getElementById('sidebar-container').innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    }
-
-    // ページ読み込み時にサイドバーを読み込む
-    window.onload = loadSidebar;
-</script>
-
+    <script>
+        function loadSidebar() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://fujiproject-off1cial.f5.si/裏側/sidebar.html', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('sidebar-container').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+        window.onload = loadSidebar;
+    </script>
 
     <div class="main-content">
         <div id="e-notice"></div>
         <div id="n-notice"></div>
         <h1>藤縄先生ありがとうプロジェクト</h1>
-        
         <main>
             <img src="fujiproject-logo2.jpg" alt="藤縄先生ありがとうプロジェクト ロゴ" class="responsive-image">
-            
-            
             <h2>藤縄先生ありがとうプロジェクトとは</h2>
             <div class="project-description">
                 <p>藤縄先生ありがとうプロジェクトは、長年にわたり教育に尽力されてきた藤縄先生への感謝の気持ちを表すために立ち上げられました。</p>
             </div>
-
-            <!-- スクロール用のダミーコンテンツ -->
             <div style="height: 1500px;"></div>
         </main>
-
         <footer>
             <div class="copyright">
                 <p>© 2024 藤縄先生ありがとうプロジェクト実行委員会</p>
@@ -239,60 +204,34 @@
         </footer>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(function(){
-            function end_loader() {
-                $('#loader03').fadeOut(800);
-            }
+        function loadNotices() {
+            var e_notice = new XMLHttpRequest();
+            var n_notice = new XMLHttpRequest();
 
-            function show_load() {
-                $('#loader03 .looping-rhombuses-spinner').fadeIn(400);
-            }
+            e_notice.open('GET', 'e-notice.txt', true);
+            n_notice.open('GET', 'n-notice.txt', true);
 
-            function hide_load() {
-                $('#loader03 .looping-rhombuses-spinner').fadeOut(400);
-            }
+            e_notice.onreadystatechange = function () {
+                if (e_notice.readyState === 4 && e_notice.status === 200) {
+                    document.getElementById('e-notice').innerHTML = e_notice.responseText;
+                }
+            };
 
-            function show_txt() {
-                $('#loader03 .txt').fadeIn(400);
-            }
+            n_notice.onreadystatechange = function () {
+                if (n_notice.readyState === 4 && n_notice.status === 200) {
+                    document.getElementById('n-notice').innerHTML = n_notice.responseText;
+                }
+            };
 
-            // e-noticeとn-noticeを読み込む関数
-            function loadNotices() {
-                $.get('e-notice.txt')
-                    .done(function(data) {
-                        $('#e-notice').html(data);
-                    })
-                    .fail(function() {
-                        $('#e-notice').hide(); // 読み込めなかった場合は非表示
-                    });
-                
-                $.get('n-notice.txt')
-                    .done(function(data) {
-                        $('#n-notice.txt').html(data);
-                    })
-                    .fail(function() {
-                        $('#n-notice').hide(); // 読み込めなかった場合は非表示
-                    });
-            }
+            e_notice.send();
+            n_notice.send();
+        }
 
-            $(window).on('load', function () {
-                show_load();
-
-                setTimeout(function () {
-                    hide_load();
-                    show_txt();
-                }, 3000); // ローディングアニメーションを3秒表示
-
-                setTimeout(function () {
-                    end_loader();
-                }, 5000); // 最終的にローディングを5秒後に終了
-
-                // 通知を読み込む
-                loadNotices();
-            });
-        });
+        window.onload = function () {
+            loadSidebar();
+            loadNotices();
+        };
     </script>
 </body>
 </html>
