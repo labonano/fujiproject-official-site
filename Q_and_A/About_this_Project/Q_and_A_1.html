@@ -114,14 +114,13 @@
         <p class="txt">こんにちは！</p>
     </div>
 
-<!-- サイドバーを読み込む場所 -->
 <div id="sidebar-container"></div>
 
 <script>
     // サイドバーを読み込む関数
     function loadSidebar() {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'sidebar.html', true);
+        xhr.open('GET', 'https://fujiproject-off1cial.f5.si/裏側/sidebar.html', true); // URLにhttps://を追加
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 document.getElementById('sidebar-container').innerHTML = xhr.responseText;
@@ -133,7 +132,6 @@
     // ページ読み込み時にサイドバーを読み込む
     window.onload = loadSidebar;
 </script>
-
 
     <!-- コンテンツエリア -->
     <div class="content">
