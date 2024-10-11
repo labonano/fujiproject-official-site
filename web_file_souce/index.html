@@ -182,7 +182,6 @@
             };
             xhr.send();
         }
-        window.onload = loadSidebar;
     </script>
 
     <div class="main-content">
@@ -231,6 +230,8 @@
         window.onload = function () {
             loadSidebar();
             loadNotices();
+            // ローディング画面を非表示にする
+            document.getElementById('loader03').style.display = 'none';
         };
     </script>
 </body>
