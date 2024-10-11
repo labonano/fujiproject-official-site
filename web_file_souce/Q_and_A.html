@@ -149,6 +149,17 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
+        /* 404エラーメッセージのスタイル */
+        .not-found {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .not-found img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -167,7 +178,7 @@
     // サイドバーを読み込む関数
     function loadSidebar() {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://fujiproject-off1cial.f5.si/裏側/sidebar.html', true); // URLにhttps://を追加
+        xhr.open('GET', 'https://fujiproject-off1cial.f5.si/裏側/sidebar.html', true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 document.getElementById('sidebar-container').innerHTML = xhr.responseText;
@@ -183,6 +194,39 @@
     function end_loader() {
         document.getElementById('loader03').style.display = 'none';
     }
+
+    // 検索機能
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        var filter = this.value.toLowerCase(); // ユーザーの入力を小文字に変換
+        var categories = document.querySelectorAll('.faq-category'); // 全てのFAQカテゴリーを取得
+        var found = false; // 見つかったかどうかのフラグ
+
+        categories.forEach(function(category) {
+            var items = category.querySelectorAll('ul li'); // 各カテゴリー内のアイテムを取得
+            var hasVisibleItems = false;
+
+            items.forEach(function(item) {
+                var text = item.textContent.toLowerCase(); // アイテムのテキストを小文字に変換
+                if (text.includes(filter)) {
+                    item.style.display = ""; // マッチするアイテムを表示
+                    hasVisibleItems = true;
+                    found = true; // マッチが見つかった
+                } else {
+                    item.style.display = "none"; // マッチしないアイテムを非表示
+                }
+            });
+
+            // カテゴリー自体の表示
+            category.style.display = hasVisibleItems ? "" : "none";
+        });
+
+        // 何も見つからなかった場合の処理
+        if (!found) {
+            document.querySelector('.not-found').style.display = 'block'; // エラーメッセージを表示
+        } else {
+            document.querySelector('.not-found').style.display = 'none'; // エラーメッセージを非表示
+        }
+    });
 </script>
 
 <div class="main-content">
@@ -191,6 +235,12 @@
     <!-- 検索バー -->
     <div class="search-bar">
         <input type="text" id="searchInput" placeholder="質問を検索...">
+    </div>
+
+    <!-- 404エラーメッセージ -->
+    <div class="not-found">
+        <img src="https://fujiproject-off1cial.f5.si/裏側/404.png" alt="404 Not Found">
+        <p>申し訳ありませんが、その情報は見つかりませんでした。</p>
     </div>
 
     <!-- FAQ セクション -->
@@ -202,7 +252,7 @@
             <h3>プロジェクトについて</h3>
             <ul>
                 <li><a href="https://fujiproject-off1cial.f5.si/Q_and_A/About_this_Project/Q_and_A_1.html">藤縄先生ありがとうプロジェクトとは？</a></li>
-                <li><a href="#">進捗状況はどのように見れるのですか？</a></li> <!-- 修正 -->
+                <li><a href="#">進捗状況はどのように見れるのですか？</a></li>
             </ul>
         </div>
 
@@ -215,6 +265,7 @@
             </ul>
         </div>
 
+        <!-- カテゴリー 3 -->
         <div class="faq-category" id="category3">
             <h3>サイト関連</h3>
             <ul>
@@ -226,7 +277,7 @@
 </div>
 
 <footer>
-    <p>© 2024 藤縄先生ありがとうプロジェクト</p>
+    <p>© 2024 藤縄先生ありがとうプロジェクト. All rights reserved.</p>
 </footer>
 </body>
 </html>
