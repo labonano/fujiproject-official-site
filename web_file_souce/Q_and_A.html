@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="description" content="藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
+<meta property="og:url" content="fujiproject-official-site.github.io/web_file_souce/index.html" />
+<meta property="og:type" content="公式サイト" />
+<meta property="og:title" content="藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
+<meta property="og:description" content="藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
+<meta property="og:site_name" content="藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
+<meta property="og:image" content="https://fujiproject-off1cial.f5.si/web_file_souce/藤縄先生ありがとうプロジェクト (1).png" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藤縄先生ありがとうプロジェクト - Q&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
+<style>
+    .responsive-image {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    .loader {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 555;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .loader .txt {
+        font-size: 45px;
+        font-weight: bold;
+        color: rgb(30, 50, 93);
+        display: none;
+    }
+    .loader .looping-rhombuses-spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .looping-rhombuses-spinner .rhombus {
+        width: 15px;
+        height: 15px;
+        background-color: #ff1d5e;
+        margin: 0 2px;
+        border-radius: 2px;
+        display: inline-block;
+        animation: looping-rhombuses-spinner-animation 2500ms linear infinite;
+    }
+    .looping-rhombuses-spinner .rhombus:nth-child(1) {
+        animation-delay: -1666ms;
+    }
+    .looping-rhombuses-spinner .rhombus:nth-child(2) {
+        animation-delay: -833ms;
+    }
+    .looping-rhombuses-spinner .rhombus:nth-child(3) {
+        animation-delay: 0ms;
+    }
+    @keyframes looping-rhombuses-spinner-animation {
+        0% {
+            transform: translateX(0) rotate(45deg) scale(0);
+        }
+        50% {
+            transform: translateX(-233%) rotate(45deg) scale(1);
+        }
+        100% {
+            transform: translateX(-466%) rotate(45deg) scale(0);
+        }
+    }
+
+    /* サイドバーとメインコンテンツのスタイル */
+    body {
+        font-family: 'Klee One', sans-serif;
+    }
+    .sidebar {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 60px;
+    }
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+    }
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+    .main-content {
+        margin-left: 250px;
+        padding: 20px;
+    }
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Q&Aセクションのスタイル */
+    .faq-section {
+        margin-top: 20px;
+    }
+    .faq-section h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .faq-category {
+        margin-bottom: 20px;
+    }
+    .faq-category h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .faq-category ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    .faq-category ul li {
+        margin-bottom: 10px;
+    }
+    .faq-category ul li a {
+        text-decoration: none;
+        color: #0066cc;
+    }
+    .faq-category ul li a:hover {
+        text-decoration: underline;
+    }
+
+    /* 検索バーのスタイル */
+    .search-bar {
+        margin-bottom: 20px;
+    }
+    .search-bar input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+<div id="loader03" class="loader">
+    <div class="looping-rhombuses-spinner">
+        <div class="rhombus"></div>
+        <div class="rhombus"></div>
+        <div class="rhombus"></div>
+    </div>
+    <p class="txt">こんにちは！</p>
+</div>
+
+<div class="sidebar">
+    <a href="index.html">ホーム</a>
+    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAF6JN5RUN0ZWMlowMzA4M0FJVjFUSjJMWEEySUNNNi4u">お問い合わせ</a>
+</div>
+
+<div class="main-content">
+    <h1>Q&A セクション</h1>
+
+    <!-- 検索バー -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="質問を検索...">
+    </div>
+
+    <!-- FAQ セクション -->
+    <div class="faq-section">
+        <h2>よくある質問</h2>
+
+        <!-- カテゴリー 1 -->
+        <div class="faq-category" id="category1">
+            <h3>プロジェクトについて</h3>
+            <ul>
+                <li><a href="#">藤縄先生ありがとうプロジェクトとは？</a></li>
+                <li><a href="#">プロジェクトの目的は何ですか？</a></li>
+            </ul>
+        </div>
+
+        <!-- カテゴリー 2 -->
+        <div class="faq-category" id="category2">
+            <h3>お問い合わせ</h3>
+            <ul>
+                <li><a href="#">お問い合わせ方法は？</a></li>
+                <li><a href="#">サポートを受けるにはどうすればよいですか？</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ログ表示 -->
+    <div id="log-output"></div>
+</div>
+
+<footer>
+    <p>© 2024 藤縄先生ありがとうプロジェクト実行委員会</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(function(){
+        function end_loader() {
+            $('#loader03').fadeOut(800);
+        }
+
+        function show_load() {
+            $('#loader03 .looping-rhombuses-spinner').fadeIn(400);
+        }
+
+        function hide_load() {
+            $('#loader03 .looping-rhombuses-spinner').fadeOut(400);
+        }
+
+        function show_txt() {
+            $('#loader03 .txt').fadeIn(400);
+        }
+
+        $(window).on('load', function () {
+            show_load();
+            setTimeout(function () {
+                hide_load();
+                show_txt();
+            }, 3000);
+            setTimeout(function () {
+                end_loader();
+            }, 5000);
+        });
+
+        // 検索バーのフィルタリング機能
+        $('#searchInput').on('input', function () {
+            var filter = $(this).val().toLowerCase();
+            $('.faq-category ul li').each(function () {
+                var text = $(this).text().toLowerCase();
+                if (text.includes(filter)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
