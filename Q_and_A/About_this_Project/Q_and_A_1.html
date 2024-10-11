@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藤縄先生ありがとうプロジェクト</title>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
+    <style>
+        .loader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 555;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .loader .txt {
+            font-size: 45px;
+            font-weight: bold;
+            color: rgb(30, 50, 93);
+            display: none;
+        }
+        .loader .looping-rhombuses-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .looping-rhombuses-spinner .rhombus {
+            width: 15px;
+            height: 15px;
+            background-color: #ff1d5e;
+            margin: 0 2px;
+            border-radius: 2px;
+            display: inline-block;
+            animation: looping-rhombuses-spinner-animation 2500ms linear infinite;
+        }
+        .looping-rhombuses-spinner .rhombus:nth-child(1) {
+            animation-delay: -1666ms;
+        }
+        .looping-rhombuses-spinner .rhombus:nth-child(2) {
+            animation-delay: -833ms;
+        }
+        .looping-rhombuses-spinner .rhombus:nth-child(3) {
+            animation-delay: 0ms;
+        }
+        @keyframes looping-rhombuses-spinner-animation {
+            0% {
+                transform: translateX(0) rotate(45deg) scale(0);
+            }
+            50% {
+                transform: translateX(-233%) rotate(45deg) scale(1);
+            }
+            100% {
+                transform: translateX(-466%) rotate(45deg) scale(0);
+            }
+        }
+
+        body {
+            font-family: 'Klee One', sans-serif; /* Klee Oneフォントを指定 */
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ローディング画面 -->
+    <div id="loader03" class="loader">
+        <div class="looping-rhombuses-spinner">
+            <div class="rhombus"></div>
+            <div class="rhombus"></div>
+            <div class="rhombus"></div>
+        </div>
+        <p class="txt">こんにちは！</p>
+    </div>
+
+    <!-- サイドバー -->
+    <div class="sidebar">
+        <a href="index.html">ホーム</a>
+        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAF6JN5RUN0ZWMlowMzA4M0FJVjFUSjJMWEEySUNNNi4u">お問い合わせ</a>
+    </div>
+<h1>Q.藤縄先生ありがとうプロジェクトとは？</h1>
+  <br></br>
+<h1>A.藤縄先生ありがとうプロジェクトとは
+藤縄先生ありがとうプロジェクトは、長年にわたり教育に尽力されてきた藤縄先生への感謝の気持ちを表すために立ち上げられました。 また、これは下記のページに記入してありますのでご確認願います。</h1>
+<a href="https://fujiproject-off1cial.f5.si/web_file_souce">こちら</a> 
+    <!-- フッター -->
+    <footer>
+        <div class="copyright">
+            <p>© 2024 藤縄先生ありがとうプロジェクト実行委員会</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            function end_loader() {
+                $('#loader03').fadeOut(800);
+            }
+
+            function show_load() {
+                $('#loader03 .looping-rhombuses-spinner').fadeIn(400);
+            }
+
+            function hide_load() {
+                $('#loader03 .looping-rhombuses-spinner').fadeOut(400);
+            }
+
+            function show_txt() {
+                $('#loader03 .txt').fadeIn(400);
+            }
+
+            $(window).on('load', function () {
+                show_load();
+
+                setTimeout(function () {
+                    hide_load();
+                    show_txt();
+                }, 3000); // ローディングアニメーションを3秒表示
+
+                setTimeout(function () {
+                    end_loader();
+                }, 5000); // 最終的にローディングを5秒後に終了
+            });
+        });
+    </script>
+</body>
+</html>
