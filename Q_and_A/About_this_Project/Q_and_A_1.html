@@ -60,7 +60,8 @@
         }
 
         body {
-            font-family: 'Klee One', sans-serif; /* Klee Oneフォントを指定 */
+            font-family: 'Klee One', sans-serif;
+            margin-left: 250px; /* サイドバーの幅に合わせて左にマージンを設定 */
         }
 
         .sidebar {
@@ -92,6 +93,12 @@
             color: white;
             text-align: center;
             padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 20px; /* コンテンツの内側の余白を追加 */
         }
     </style>
 </head>
@@ -112,11 +119,16 @@
         <a href="index.html">ホーム</a>
         <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAF6JN5RUN0ZWMlowMzA4M0FJVjFUSjJMWEEySUNNNi4u">お問い合わせ</a>
     </div>
-<h1>Q.藤縄先生ありがとうプロジェクトとは？</h1>
-  <br></br>
-<h1>A.藤縄先生ありがとうプロジェクトとは</h1>
-<p>藤縄先生ありがとうプロジェクトは、長年にわたり教育に尽力されてきた藤縄先生への感謝の気持ちを表すために立ち上げられました。 また、これは下記のページに記入してありますのでご確認願います。</p>
-<a href="https://fujiproject-off1cial.f5.si/web_file_souce">こちら</a> 
+
+    <!-- コンテンツエリア -->
+    <div class="content">
+        <h1>Q.藤縄先生ありがとうプロジェクトとは？</h1>
+        <br></br>
+        <h1>A.藤縄先生ありがとうプロジェクトとは</h1>
+        <p>藤縄先生ありがとうプロジェクトは、長年にわたり教育に尽力されてきた藤縄先生への感謝の気持ちを表すために立ち上げられました。 また、これは下記のページに記入してありますのでご確認願います。</p>
+        <a href="https://fujiproject-off1cial.f5.si/web_file_souce">こちら</a>
+    </div>
+
     <!-- フッター -->
     <footer>
         <div class="copyright">
