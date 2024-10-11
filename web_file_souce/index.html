@@ -194,10 +194,26 @@
         <p class="txt">こんにちは！</p>
     </div>
 
-    <div class="sidebar">
-        <a href="index.html">ホーム</a>
-        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAF6JN5RUN0ZWMlowMzA4M0FJVjFUSjJMWEEySUNNNi4u">お問い合わせ</a>
-    </div>
+ <!-- サイドバーを読み込む場所 -->
+<div id="sidebar-container"></div>
+
+<script>
+    // サイドバーを読み込む関数
+    function loadSidebar() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'sidebar.html', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                document.getElementById('sidebar-container').innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    }
+
+    // ページ読み込み時にサイドバーを読み込む
+    window.onload = loadSidebar;
+</script>
+
 
     <div class="main-content">
         <div id="e-notice"></div>
