@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta name="description" content="藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
-    <meta property="og:url" content="fujiproject-official-site.github.io/web_file_souce/index.html" />
+    <meta property="og:url" content="fujiproject-off1cial.f5.si/web_file_souce/index.html" />
     <meta property="og:type" content="公式サイト" />
     <meta property="og:title" content="藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
     <meta property="og:description" content="藤縄先生ありがとうプロジェクト公式ウェブサイト / Fujinawa Teacher Thank You Project Official Website" />
@@ -199,7 +199,7 @@
     document.getElementById('searchInput').addEventListener('keyup', function() {
         var filter = this.value.toLowerCase(); // ユーザーの入力を小文字に変換
         var categories = document.querySelectorAll('.faq-category'); // 全てのFAQカテゴリーを取得
-        var found = false; // 見つかったかどうかのフラグ
+        var found = false; // 検索結果が見つかったかどうかのフラグ
 
         categories.forEach(function(category) {
             var items = category.querySelectorAll('ul li'); // 各カテゴリー内のアイテムを取得
@@ -216,16 +216,12 @@
                 }
             });
 
-            // カテゴリー自体の表示
+            // カテゴリーの表示/非表示を切り替える
             category.style.display = hasVisibleItems ? "" : "none";
         });
 
         // 何も見つからなかった場合の処理
-        if (!found) {
-            document.querySelector('.not-found').style.display = 'block'; // エラーメッセージを表示
-        } else {
-            document.querySelector('.not-found').style.display = 'none'; // エラーメッセージを非表示
-        }
+        document.querySelector('.not-found').style.display = found ? 'none' : 'block';
     });
 </script>
 
@@ -276,8 +272,9 @@
     </div>
 </div>
 
+<!-- フッター -->
 <footer>
-    <p>© 2024 藤縄先生ありがとうプロジェクト. All rights reserved.</p>
+    <p>藤縄先生ありがとうプロジェクト © 2024</p>
 </footer>
 </body>
 </html>
