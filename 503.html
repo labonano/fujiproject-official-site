@@ -1,21 +1,3 @@
-<?php
-// IPアドレスの取得
-$ip_address = $_SERVER['REMOTE_ADDR'];
-
-// 現在のタイムスタンプを取得
-$timestamp = date("Y-m-d H:i:s");
-
-// アクセスしようとしたURLの取得
-$request_uri = $_SERVER['REQUEST_URI'];
-
-// リファラの取得
-$referrer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'リファラなし';
-
-// PING値の取得（ダミー値を使用）
-$ping_value = "応答なし"; // 実際のPING値を取得するためのコマンドはサーバー環境に依存
-
-// 503エラーページを表示
-?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -81,11 +63,11 @@ $ping_value = "応答なし"; // 実際のPING値を取得するためのコマ�
         
         <div class="dev-info">
             <p><strong>開発者情報:</strong></p>
-            <p>IPアドレス: <?php echo $ip_address; ?></p>
-            <p>PING値: <?php echo $ping_value; ?></p>
-            <p>アクセスしたURL: <?php echo htmlspecialchars($request_uri); ?></p>
-            <p>リファラ: <?php echo htmlspecialchars($referrer); ?></p>
-            <p>タイムスタンプ: <?php echo $timestamp; ?></p>
+            <p>IPアドレス: <span id="ip-address"></span></p>
+            <p>PING値: <span id="ping-value"></span></p>
+            <p>アクセスしたURL: <span id="request-uri"></span></p>
+            <p>リファラ: <span id="referrer"></span></p>
+            <p>タイムスタンプ: <span id="timestamp"></span></p>
         </div>
 
         <div class="instructions">
@@ -101,5 +83,32 @@ $ping_value = "応答なし"; // 実際のPING値を取得するためのコマ�
 
         <a href="/">ホームに戻る</a>
     </div>
+
+    <script>
+        // サーバーからの情報を取得する関数
+        function fetchDevInfo() {
+            fetch('http://localhost:3000/get_info') // Node.jsエンドポイント
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // データをDOMに挿入
+                    document.getElementById('ip-address').innerText = data.ipAddress;
+                    document.getElementById('ping-value').innerText = data.pingValue;
+                    document.getElementById('request-uri').innerText = data.requestUri;
+                    document.getElementById('referrer').innerText = data.referrer;
+                    document.getElementById('timestamp').innerText = data.timestamp;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+
+        // ページが読み込まれたときにデータを取得
+        window.onload = fetchDevInfo;
+    </script>
 </body>
 </html>
