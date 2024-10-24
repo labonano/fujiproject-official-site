@@ -1,9 +1,9 @@
-
-    <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet"><style>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
+<style>
 ul, ol {
   color: #1e366a;
-  border-top: solid #1e366a 1px;/*上のボーダー*/
-  border-bottom: solid #1e366a 1px;/*下のボーダー*/
+  border-top: solid #1e366a 1px;
+  border-bottom: solid #1e366a 1px;
   padding: 0.5em 0 0.5em 1.5em;
 }
 
@@ -109,10 +109,9 @@ ul li, ol li {
 <div id="sidebar-container"></div>
 
 <script>
-    // サイドバーを読み込む関数
     function loadSidebar() {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://fujiproject-off1cial.f5.si/裏側/sidebar.html', true); // URLにhttps://を追加
+        xhr.open('GET', 'https://fujiproject-off1cial.f5.si/裏側/sidebar.html', true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 document.getElementById('sidebar-container').innerHTML = xhr.responseText;
@@ -121,21 +120,40 @@ ul li, ol li {
         xhr.send();
     }
 
-    // ページ読み込み時にサイドバーを読み込む
     window.onload = loadSidebar;
 </script>
 <h1>Hello Fujiproject Official Website Privacy policy!</h1>
-<h2>Japanase Version / 日本語版  Release Date 2024/10/26</h2>
+<h2>Japanese Version / 日本語版  Release Date 2024/10/26</h2>
 <br>
 <h3>第一項 / 個人情報の取扱</h3>
 <ul>
   <li><h4>第一条 Cookieについて</h4></li>
-当サイト(以下、FJPOW)は、Cookieの使用について、以下のように定めます。<br>
-<ol>
-  <li>FJPOWご使用者(以下、お客様）の情報（IPアドレスなど）（この情報はサーバに送信されません）</li>
-  <li>ログイン情報</li>
-</ol>
-<li><h4>第二条　お問い合せ情報について</h4></li>
+  当サイト（以下、FJPOW）は、Cookieの使用について以下のように定めます。<br>
+  <h5>Cookieの目的</h5>
+  <p>FJPOWでは、ユーザーの利便性向上、サイトの機能維持、訪問者の行動分析を目的としてCookieを使用します。</p>
+  <h5>収集する情報</h5>
+  <p>FJPOWをご利用いただくお客様（以下、「お客様」）に関する情報として、以下の情報を収集します：</p>
+  <ul>
+    <li>IPアドレス</li>
+    <li>ブラウザ情報</li>
+    <li>閲覧履歴</li>
+    <li>ログイン情報</li>
+  </ul>
+  <p>（なお、IPアドレスなどの情報はサーバに送信されません。）</p>
+  <h5>Cookieの種類</h5>
+  <p>FJPOWでは、ファーストパーティCookieとサードパーティCookieを使用します。ファーストパーティCookieはサイトの機能向上に寄与し、サードパーティCookieは広告や分析目的で使用されます。</p>
+  <h5>保存期間</h5>
+  <p>Cookieは、セッション中のみ有効なものと、一定期間保存されるものがあります。具体的な保存期間は各Cookieによって異なります。</p>
+  <h5>オプトアウト権利</h5>
+  <p>お客様は、ブラウザ設定を通じてCookieの受け入れを拒否することができます。また、既存のCookieを削除することも可能です。詳細な手順については、お使いのブラウザのヘルプセクションをご参照ください。</p>
+  <li><h4>第二条　お問い合わせ情報について</h4></li>
+  <p>お客様からのお問い合わせに関しては、以下の情報を収集し、適切に管理いたします：</p>
+  <ul>
+    <li>お名前</li>
+    <li>メールアドレス</li>
+    <li>お問い合わせ内容</li>
+  </ul>
+  <p>これらの情報は、お問い合わせへの対応やサービス向上のために使用します。個人情報保護方針に従い、適切に取り扱います。</p>
 </ul>
 
 <footer>
