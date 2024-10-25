@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+
+<script type="text/javascript">
+  (function () {
+    /* バナー文言 */
+    var txt_opt = {
+      'ja': {
+        btnTxt: 'オプトアウトする',
+        msgTxt: '一度Cookieの利用に同意した後でも、「オプトアウトする」を押すことで、Cookie利用設定をオフに変更できます。'
+      },
+      'en': {
+        btnTxt: 'Opt-out cookies',
+        msgTxt: 'Even after you have agreed to use cookies once, you can turn off the cookie usage settings by clicking "Opt-out cookies".'
+      },
+    }
+
+    var utz = utz || 'ja';
+    var tzoffset = tzoffset || (new Date()).getTimezoneOffset();
+    if (tzoffset != -540) {
+      utz = 'en';
+    }
+    setTimeout(function(){
+      if(window.cookieconsent.utils.getCookie('_ul_cookie_consent') != undefined && window.cookieconsent.utils.getCookie('_ul_cookie_consent') != 'deny'){
+        var elem = document.getElementById('ulccwidparent').querySelector('.cc-window');
+        elem.removeAttribute('style');elem.classList.toggle('cc-invisible');
+        var el = elem.querySelector( '.cc-btn.cc-allow' );el.parentNode.removeChild( el );
+        elem.querySelector('.cc-btn.cc-deny').innerText = txt_opt[utz]["btnTxt"];
+        elem.querySelector('.cc-btn.cc-deny').setAttribute('style', 'border-color: rgb(51,51,51);');
+        elem.querySelector('.cc-btn.cc-deny').classList.toggle('cc-btn-link');elem.querySelector('.cc-message').innerText = txt_opt[utz]["msgTxt"];
+      }
+    }, 200);
+  })();
+</script>

@@ -1,0 +1,76 @@
+<meta charset="UTF-8">
+
+<script type="text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  var _ulcc_conf = _ulcc_conf || {};
+  _ulcc_conf['domain'] = ''; /**** 対象ドメイン（サブドメインをまたいで管理する場合、ドメインの先頭に「.」をつけてください。例： .example.com ****/
+  _ulcc_conf['ga_tracking_id'] = [''];	/**** ここにGAのトラッキングIDを入力（任意） ****/
+  _ulcc_conf['cookie_policy_url'] = '' /**** ここにポリシーページのURLを入力（任意） ****/
+  _ulcc_conf['cookie_expiry_days'] = { 'allow': 365, 'deny': 30 }; /**** バナー再表示の期限 ****/
+
+  /* ポップアップの表示オプション（任意） */
+  var _ulccwid_options = {
+    design: {
+      bg_color: "", /* 背景色 */
+      text_color: "", /* 文字色 */
+      btn_bg_color: "", /* 同意ボタンの背景色 */
+      btn_text_color: "" /* 同意ボタンの背景色 */
+    },
+    content: {
+      ja: {
+        message: "",
+        link_text: "",
+        link_url: "",
+        allow_btn_text: "",
+        deny_btn_text: ""
+      },
+      en: {
+        message: "",
+        link_text: "",
+        link_url: "",
+        allow_btn_text: "",
+        deny_btn_text: ""
+      }
+    }
+  };
+
+  var _ulcc_allow_cookie_function = function(){
+  /* 同意選択時に実行したいコードをここに入力 */
+
+  };
+
+  var _ulcc_deny_cookie_function = function(){
+  /* 拒否選択時に実行したいコードをここに入力 */
+
+  };
+
+  var _uiconv = _uiconv || []; var _uic = _uic || {}; var _gaq = _gaq || [];
+  (function () {
+    var js_src = ''; /* ここにJavaScriptファイルのURLを入力 */
+    var style_src = ''; /* ここにCSSファイルのURLを入力 */
+
+    var cc = document.createElement('script'); cc.type = 'text/javascript'; cc.async = true;
+    cc.src = js_src;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(cc, s);
+
+    window.ga = window.ga || function () {
+      (ga.q = ga.q || []).push(arguments)
+    };ga.l=+new Date;
+    for (var i = 0; i < _ulcc_conf['ga_tracking_id'].length; i++) {
+      ga('create', _ulcc_conf['ga_tracking_id'][i], {
+        'storage': 'none'
+      });
+      ga('set', 'anonymizeIp', true);
+    }
+
+    var head = document.getElementsByTagName('head')[0];
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = style_src;
+    link.media = 'all';
+    head.appendChild(link);
+  })();
+</script>
