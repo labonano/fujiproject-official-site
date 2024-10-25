@@ -1,70 +1,77 @@
 <meta charset="UTF-8">
-
 <script type="text/javascript">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  var _ulcc_conf = _ulcc_conf || {};
-  _ulcc_conf['domain'] = '';fujiproject-off1cial.f5.si
-  _ulcc_conf['ga_tracking_id'] = [''];	/**** ここにGAのトラッキングIDを入力（任意） ****/
-  _ulcc_conf['cookie_policy_url'] = '' https://fujiproject-off1cial.f5.si/Poricy/Privacy_policy.html
-  _ulcc_conf['cookie_expiry_days'] = { 'allow': 30, 'deny': 30 }; /**** バナー再表示の期限 ****/
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
 
-  /* ポップアップの表示オプション（任意） */
-  var _ulccwid_options = {
+var _ulcc_conf = _ulcc_conf || {};
+_ulcc_conf['domain'] = 'fujiproject-off1cial.f5.si';
+_ulcc_conf['ga_tracking_id'] = [''];  // GAのトラッキングIDを入力
+_ulcc_conf['cookie_policy_url'] = 'https://fujiproject-off1cial.f5.si/Poricy/Privacy_policy.html';
+_ulcc_conf['cookie_expiry_days'] = {
+    'allow': 30,
+    'deny': 30
+};
+
+var _ulccwid_options = {
     design: {
-      bg_color: "", /* 背景色 */
-      text_color: "", /* 文字色 */
-      btn_bg_color: "", /* 同意ボタンの背景色 */
-      btn_text_color: "" /* 同意ボタンの背景色 */
+        bg_color: "",
+        text_color: "",
+        btn_bg_color: "",
+        btn_text_color: ""
     },
     content: {
-      ja: {
-        message: "",
-        link_text: "",
-        link_url: "",
-        allow_btn_text: "",
-        deny_btn_text: ""
-      },
-      en: {
-        message: "",
-        link_text: "",
-        link_url: "",
-        allow_btn_text: "",
-        deny_btn_text: ""
-      }
+        ja: {
+            message: "",
+            link_text: "",
+            link_url: "",
+            allow_btn_text: "",
+            deny_btn_text: ""
+        },
+        en: {
+            message: "",
+            link_text: "",
+            link_url: "",
+            allow_btn_text: "",
+            deny_btn_text: ""
+        }
     }
-  };
+};
 
-  var _ulcc_allow_cookie_function = function(){
-  /* 同意選択時に実行したいコードをここに入力 */
+var _ulcc_allow_cookie_function = function(){
+    // 同意選択時に実行したいコード
+};
 
-  };
+var _ulcc_deny_cookie_function = function(){
+    // 拒否選択時に実行したいコード
+};
 
-  var _ulcc_deny_cookie_function = function(){
-  /* 拒否選択時に実行したいコードをここに入力 */
+var _uiconv = _uiconv || [];
+var _uic = _uic || {};
+var _gaq = _gaq || [];
 
-  };
-
-  var _uiconv = _uiconv || []; var _uic = _uic || {}; var _gaq = _gaq || [];
-  (function () {
-    var js_src = '';https://fujiproject-off1cial.f5.si/security/ulcc.min.js
-    var style_src = '';https://fujiproject-off1cial.f5.si/security/ulcc.min.css
-
-    var cc = document.createElement('script'); cc.type = 'text/javascript'; cc.async = true;
+(function () {
+    var js_src = 'https://fujiproject-off1cial.f5.si/security/ulcc.min.js';
+    var style_src = 'https://fujiproject-off1cial.f5.si/security/ulcc.min.css';
+    
+    var cc = document.createElement('script');
+    cc.type = 'text/javascript';
+    cc.async = true;
     cc.src = js_src;
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(cc, s);
-
+    
     window.ga = window.ga || function () {
-      (ga.q = ga.q || []).push(arguments)
-    };ga.l=+new Date;
+        (ga.q = ga.q || []).push(arguments)
+    };
+    ga.l = +new Date;
+    
     for (var i = 0; i < _ulcc_conf['ga_tracking_id'].length; i++) {
-      ga('create', _ulcc_conf['ga_tracking_id'][i], {
-        'storage': 'none'
-      });
-      ga('set', 'anonymizeIp', true);
+        ga('create', _ulcc_conf['ga_tracking_id'][i], {
+            'storage': 'none'
+        });
+        ga('set', 'anonymizeIp', true);
     }
-
+    
     var head = document.getElementsByTagName('head')[0];
     var link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -72,5 +79,5 @@
     link.href = style_src;
     link.media = 'all';
     head.appendChild(link);
-  })();
+})();
 </script>
