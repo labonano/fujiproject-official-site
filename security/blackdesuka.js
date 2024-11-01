@@ -5,7 +5,7 @@ async function checkIPWithGAS() {
     const { ip } = await ipResponse.json();
 
     // GAS Web アプリに IP を送信
-    const gasUrl = `https://script.google.com/a/macros/mict.ed.jp/s/AKfycby-lZHtsAGa4sNWhfhivM7vK8YLEJb6HLWeqJCD5oygRhY5iz10fcAKEdEOLC8M5Dx_/exec?ip=${ip}`;
+    const gasUrl = `https://script.google.com/a/macros/mict.ed.jp/s/AKfycbx8_qSaAOumIIop6g1G0TqCUGJ1iKbxYePkP-1nCT_V9MwVV5ldPL0uHJpfFsZTieY/exec?ip=${ip}`;
     const response = await fetch(gasUrl);
     const data = await response.json();
 
