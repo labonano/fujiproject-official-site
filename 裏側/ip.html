@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP チェック</title>
+</head>
+<body>
+  <h1>IP チェックページ</h1>
+  <p>アクセス元 IP をチェックしています...</p>
+
+  <script>
+    async function checkIPWithGAS() {
+      try {
+        const ipResponse = await fetch('https://api64.ipify.org?format=json');
+        const { ip } = await ipResponse.json();
+
+        const gasUrl = `https://script.google.com/a/macros/mict.ed.jp/s/AKfycby-lZHtsAGa4sNWhfhivM7vK8YLEJb6HLWeqJCD5oygRhY5iz10fcAKEdEOLC8M5Dx_/exec?ip=${ip}`;
+        const response = await fetch(gasUrl);
+        const data = await response.json();
+
+        if (data.blacklisted) {
+          window.location.href = 'https://fujiproject-off1cial.f5.si/403.html';
+        } else {
+          console.log('アクセス許可されています');
+        }
+      } catch (error) {
+        console.error('エラーが発生しました:', error);
+      }
+    }
+
+    checkIPWithGAS();
+  </script>
+</body>
+</html>
