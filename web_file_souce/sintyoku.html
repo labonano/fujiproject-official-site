@@ -1,27 +1,32 @@
 <script>
 async function checkIPWithGAS() {
   try {
-    // クライアントの IP を取得
-    const ipResponse = await fetch('https://api64.ipify.org?format=json');
-    const { ip } = await ipResponse.json();
+    // クライアントのIP情報を取得
+    const ipInfoResponse = await fetch('https://ipinfo.io/json');
+    const ipInfo = await ipInfoResponse.json(); // IP情報をすべて取得
 
-    // GAS Web アプリに IP を送信
-    const gasUrl = `https://script.google.com/a/macros/mict.ed.jp/s/AKfycby-lZHtsAGa4sNWhfhivM7vK8YLEJb6HLWeqJCD5oygRhY5iz10fcAKEdEOLC8M5Dx_/exec?ip=${ip}`;
-    const response = await fetch(gasUrl);
+    // IP情報をGASに送信するために、パラメータとしてエンコード
+    const gasUrl = `https://script.google.com/macros/s/AKfycbzDDhGcNMPHyZ5ruGYBNomS4P7Url3ZaZvI6P1bE0Mnr7Nyri-rA4uK5n5Mpohgnsgq/exec`;
+    const params = new URLSearchParams(ipInfo); // ipInfo オブジェクトをURL形式に変換
+    const response = await fetch(`${gasUrl}?${params.toString()}`); // GASへ送信
+
+    if (!response.ok) {
+      throw new Error(`GAS リクエストが失敗しました: ${response.status}`);
+    }
+
     const data = await response.json();
 
     if (data.blacklisted) {
       // ブラックリスト入りならリダイレクト
       window.location.href = 'https://fujiproject-off1cial.f5.si/403.html';
     } else {
-      console.log('アクセス許可されています');
+      alert('アクセス許可されています');
     }
   } catch (error) {
-    console.error('エラーが発生しました:', error);
+    alert('エラーが発生しました: ' + error.message);
   }
 }
 
 // ページ読み込み時に IP チェックを実行
 checkIPWithGAS();
 </script>
-
