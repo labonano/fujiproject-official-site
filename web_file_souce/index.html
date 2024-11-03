@@ -23,12 +23,9 @@ async function checkIPWithGAS() {
       // ブラックリスト入りならリダイレクト
       window.location.href = 'https://fujiproject-off1cial.f5.si/403.html';
     } else {
-      alert('アクセス許可されています');
+return false;
     }
-  } catch (error) {
-    alert('エラーが発生しました: ' + error.message);
-  }
-}
+
 
 // ページ読み込み時に IP チェックを実行
 checkIPWithGAS();
