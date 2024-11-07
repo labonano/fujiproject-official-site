@@ -132,7 +132,24 @@
 </script>
 
     <div class="content">
-        <!-- コンテンツエリア（Q&A部分は除外） -->
+<script>
+const image = document.querySelector('.fade-in');
+image.addEventListener('load', () => {
+  image.classList.add('show');
+});
+</script>
+<style>
+.fade-in {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 1s, transform 1s;
+}
+
+.fade-in.show {
+  opacity: 1;
+  tra
+</style>
+<img src="https://bd077025.xdrive.jp/index.php/s/Tk6Ni9r6HsddyE9" width="200" alt="" style="text-align: right;">
     </div>
 
     <footer>
