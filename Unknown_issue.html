@@ -1,0 +1,47 @@
+<h1>不明なエラーが発生しました.</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自動問題報告 API</title>
+    <style>
+        #text {
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="text">----- 自動問題報告 API スタート -----</div>
+
+    <script>
+        const messages = [
+            "----- 自動問題報告 API スタート -----",
+            "API Server Searching.",
+            "API Server Searching..",
+            "API Server Searching...",
+            "API Server Connection.",
+            "API Server Connection..",
+            "API Server Connection...",
+            "API Server Connection!",
+            "API を実行します。",
+            "問題報告中...",
+            "報告終了...",
+            "----- 自動問題報告 API 終了 -----"
+        ];
+
+        let index = 0;
+        const textElement = document.getElementById("text");
+
+        setInterval(() => {
+            textElement.textContent = messages[index];
+            index = (index + 1) % messages.length;
+        }, 1000);
+    </script>
+</body>
+</html>
